@@ -1,5 +1,6 @@
 package com.springprj.project;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,11 @@ public class SpringprjApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringprjApplication.class, args);
+	}
+	
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
 	}
 
 }

@@ -9,7 +9,7 @@ import com.springprj.project.dto.ClientResponseDto;
 public class ClientServiceImpl2 implements ClientService{
 
 	@Override
-	public ClientRequestDto save(ClientRequestDto clientRequestDto) {
+	public ClientResponseDto save(ClientRequestDto clientRequestDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
