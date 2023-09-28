@@ -1,5 +1,7 @@
 package com.springprj.project.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.springprj.project.dto.ClientRequestDto;
@@ -34,6 +36,12 @@ public class ClientServiceImpl2 implements ClientService{
 
 	@Override
 	public ClientResponseDto update(ClientRequestDto clientRequestDto, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ClientResponseDto> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

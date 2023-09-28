@@ -1,6 +1,12 @@
 package com.springprj.project.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.springprj.project.dao.ClientDao;
@@ -47,8 +53,23 @@ public class ClientServiceImpl implements ClientService{
 
 	@Override
 	public ClientResponseDto update(ClientRequestDto clientRequestDto, Integer id) {
-		// TODO Auto-generated method stub
+		Optional<ClientEntity> clientEntityOptional = clientDao.findById(id);
+		if(clientEntityOptional.isPresent()) {
+			ClientEntity clientEntity = modelMapper.map(clientRequestDto, ClientEntity.class);
+			clientEntity.setId(id);
+			ClientEntity update =  clientDao.save(clientEntity);
+			return modelMapper.map(update, ClientResponseDto.class);
+		}else {
+			throw new NotFoundException();
+		}
 		return null;
+	}
+
+	@Override
+	public List<ClientResponseDto> findAll() {
+		// TODO Auto-generated method stub
+		return clientDao.findAll()
+				.stream().map(el ->modelMapper.map(el, ClientResponseDto.class)).collect(Collectors.toList());
 	}
 
 }
